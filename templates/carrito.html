@@ -1,0 +1,85 @@
+<h1>🛒 Carrito de compras</h1>
+
+<a href="/catalogo" class="btn btn-secondary mb-4">
+← Seguir comprando
+</a>
+
+
+{% if items %}
+
+<table class="table table-bordered">
+
+<thead>
+
+<tr>
+
+<th>Libro</th>
+<th>Autor</th>
+<th>Cantidad</th>
+<th>Precio unitario</th>
+<th>Subtotal</th>
+<th>Acciones</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+{% for item in items %}
+
+<tr>
+
+<td>{{ item.nombre }}</td>
+
+<td>{{ item.autor }}</td>
+
+<td>{{ item.cantidad }}</td>
+
+<td>$ {{ item.precio }}</td>
+
+<td>$ {{ item.subtotal }}</td>
+
+
+<td>
+
+<a href="/eliminar/{{ item.id }}"
+class="btn btn-danger btn-sm">
+
+Eliminar
+
+</a>
+
+</td>
+
+
+</tr>
+
+{% endfor %}
+
+
+</tbody>
+
+</table>
+
+
+<h3>Total a pagar: $ {{ total }}</h3>
+
+
+<a href="/checkout" class="btn btn-success">Finalizar compra</a>
+Finalizar compra
+</button>
+
+<a href="/vaciar_carrito"
+class="btn btn-warning">
+
+Vaciar carrito
+
+</a>
+
+{% else %}
+
+<p>Tu carrito está vacío.</p>
+
+{% endif %}
